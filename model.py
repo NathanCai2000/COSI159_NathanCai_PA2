@@ -1,6 +1,8 @@
+import torch
 import torch.nn as nn
 import torch.nn.functional as F
 
+from torch import Tensor
 
 class Net(nn.Module):
     def __init__(self):
@@ -22,4 +24,27 @@ class Net(nn.Module):
         x = F.dropout(x, training=self.training)
         x = self.fc1(x)
 
-        return F.log_softmax(x)
+        return self.A_Softmax(x)
+    
+    def A_Softmax(input: Tensor) -> Tensor:
+        """
+        ---Implimentation not Complete---
+
+        Parameters
+        ----------
+        input : Tensor
+            The input Tensor
+
+        Returns
+        -------
+        Tensor
+            A Tensor of same size to the input Tensor
+
+        """
+        means = torch.mean(input, 1, keepdim=True)[0]
+        a = torch.exp(input-means)
+        a_sum = torch.sum(a, 1, keepdim=True)
+    
+        retu = -torch.log(a/a_sum)/Tensor.size(input, dim=1)
+        
+        return retu

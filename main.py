@@ -70,57 +70,7 @@ def main():
     # model training
     trainer.train(train_loader=train_Loader, epochs=args.epochs, lr=args.lr, save_dir="./save/")
     
-    """---
-    # datasets
-    # transform = torchvision.transforms.Compose([
-    #     torchvision.transforms.ToTensor(),
-    #     torchvision.transforms.Normalize((0.1307,), (0.3081,))
-    # ])
-    train_loader = torch.utils.data.DataLoader(
-        torchvision.datasets.MNIST(root='./data/', train=True, download=True, transform=transform),
-        batch_size=args.bs,
-        shuffle=True,
-    )
-    test_loader = torch.utils.data.DataLoader(
-        torchvision.datasets.MNIST(root='./data/', train=False, download=True, transform=transform),
-        batch_size=args.bs,
-        shuffle=False,
-    )
-
-    # trainer
-    trainer = Trainer(model=model)
-    
-    # model import and test
-    ---"""
-    
-    """
-    import os
-    # loads the model again and then evaluate itself again (Should have same scores)
-    trainer.load_model(os.path.join("./save/", "mnist.pth"))
-    trainer.eval(test_loader=test_loader)
-    """
-    
-    """---
-    # model training
-    trainer.train(train_loader=train_loader, epochs=args.epochs, lr=args.lr, save_dir="./save/")
-
-    # model evaluation
-    trainer.eval(test_loader=test_loader)
-
-    # util that loads the test data for use as the samples for testing model inference
-    examples = enumerate(test_loader)
-    tmp, (example_data, example_targets) = next(examples)
-    example_data.shape
-    
-    
-    # model inference
-    sample = example_data  # complete the sample here
-    trainer.infer(sample=sample)
-    
-    
-
     return
-    ---"""
     
 def showPairs(data, cols, rows, shift=0): 
     """

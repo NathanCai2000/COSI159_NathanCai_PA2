@@ -1,4 +1,4 @@
-# COSI 159A - Sphereface:
+# COSI 159A - Sphereface: ***NON-Functional Currently***
 
 ## Create Conda Environment:
 

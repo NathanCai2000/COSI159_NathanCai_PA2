@@ -36,6 +36,7 @@ class Preprocessor:
 
         """
         self.train_tran = torchvision.transforms.Compose([
+            torchvision.transforms.Resize(96),
             torchvision.transforms.ToTensor(),
             torchvision.transforms.Normalize(127.5, 128),
             torchvision.transforms.RandomHorizontalFlip(p=0.5)
@@ -50,6 +51,7 @@ class Preprocessor:
             includes the sphereface data normalization.
         """
         self.test_tran = torchvision.transforms.Compose([
+            torchvision.transforms.Resize(96),
             torchvision.transforms.ToTensor(),
             torchvision.transforms.Normalize(127.5, 128)
         ])
